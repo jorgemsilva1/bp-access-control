@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import styled from "styled-components";
 
 export const Form = () => {
-  const { control, formState, handleSubmit, register, reset } = useForm({
+  const { handleSubmit, register, reset } = useForm({
     defaultValues: {
       username: "",
     },
@@ -48,28 +48,48 @@ export const Form = () => {
 
   return (
     <>
-      <img
-        src="/logo_bacana.png"
-        alt="log-bacana"
-        style={{ marginBottom: 24 }}
-      />
-      <form onSubmit={handleSubmit(_handleSubmit, _onError)}>
-        <label>Username</label>
-        <Input
-          {...register("username", {
-            required: {
-              value: true,
-              message: "Username é óbrigatório.",
-            },
-          })}
+      <Container>
+        <img
+          src="/logo_bacana.png"
+          alt="log-bacana"
+          style={{ marginBottom: 24 }}
         />
+        <form onSubmit={handleSubmit(_handleSubmit, _onError)}>
+          <label>Username</label>
+          <Input
+            {...register("username", {
+              required: {
+                value: true,
+                message: "Username é óbrigatório.",
+              },
+            })}
+          />
 
-        <hr style={{ margin: "12px 0" }} />
-        <Button>Validar</Button>
-      </form>
+          <hr style={{ margin: "12px 0" }} />
+          <Button>Validar</Button>
+        </form>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
+      </Container>
     </>
   );
 };
+
+const Container = styled.section`
+  width: 100%;
+  padding: 12px 16px;
+`;
 
 const Input = styled.input`
   width: 100%;
