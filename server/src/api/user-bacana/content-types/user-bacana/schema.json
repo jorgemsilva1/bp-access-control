@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_bacanas",
+  "info": {
+    "singularName": "user-bacana",
+    "pluralName": "user-bacanas",
+    "displayName": "User Bacana"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string"
+    }
+  }
+}
